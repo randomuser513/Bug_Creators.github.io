@@ -5,7 +5,7 @@ body {
 }
 
 header {
-    background-color: #f5f5f5;
+    background-color: #ffdde4;
     padding: 20px;
     text-align: center;
 }
@@ -44,4 +44,12 @@ main {
     text-align: right;
     color: #007bff;
     text-decoration: none;
+}
+
+.card-green {
+    background-color: #b4e0c9; /* Green background color */
+}
+
+.card-blue {
+    background-color: #a9cfe2; /* Blue background color */
 }

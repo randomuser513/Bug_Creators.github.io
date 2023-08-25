@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.tutorial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.tutorial-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.tutorial-card img {
+    width: 100%;
+    height: auto;
+}
+
+.tutorial-card h2 {
+    margin-top: 10px;
+}
+
+.tutorial-card p {
+    margin-top: 5px;
+}
+
+.tutorial-card a {
+    display: block;
+    margin-top: 10px;
+    text-align: right;
+    color: #007bff;
+    text-decoration: none;
+}

@@ -1,0 +1,96 @@
+-- database creation
+create database upcycletext;
+use upcycletext;
+
+-- userinfo table
+create table userinfo (
+	uid varchar(256) not null , 
+    password varchar(256) not null,
+    email varchar(256) not null,
+    address varchar(256) not null,
+    primary key (uid)
+);
+
+insert into userinfo values ('buggy', 'buggy1234', 'buggy@email.com','21 North Canal Road 048833');
+insert into userinfo values ('anna', 'anna1984','anna@email.com','6 Raffles Boulevard, #02-201 Marina Square 039594');
+
+
+select * from userinfo;
+
+-- calendar table
+create table calendar (
+	event_name varchar(256) not null,
+    event_date datetime not null,
+    event_desc varchar(1000) not null,
+    event_instructor varchar(256) not null,
+    primary key (event_name)
+);
+
+
+insert into calendar(event_name, event_date, event_desc, event_instructor) values ('Crocheting 101', '2023-09-23 16:00:00', 'In this workshop, you will learn the basics of crocheting! Sign up now!', 'Sam');
+
+select * from calendar;
+
+-- forum table
+create table forum (
+	uid varchar(256) not null,
+	post_name varchar(256) not null,
+    post_content varchar(5000) not null,
+    post_datetime datetime not null,
+    primary key(uid, post_datetime)
+);
+
+
+insert into forum(uid, post_name, post_content, post_datetime) values ('anna', 'Crocheting 101 Workshop', "Hey everyone! I'm thinking of joining the crocheting workshop! Is anyone else looking to join too? Tele me @anna", '2023-08-25 13:25:42');
+
+select * from forum;
+
+create table textile_trading (
+	uid varchar(256) not null,
+    textile_name varchar(256) not null,
+    textile_desc varchar(1000),
+    textile_datetime datetime not null,
+    traded_with varchar(256),
+    textile_materials varchar(500),
+    primary key (uid, textile_name, textile_datetime)
+);
+
+
+insert into textile_trading(uid,textile_name,textile_desc, textile_datetime, textile_materials) values ('anna', 'Chiffon Royal Blue 25m', 'Bought it at Spotlight for outerlayer of a dress, but I did not need it. Tele @anna for enquiries.', '2023-08-25 11:11:11', 'chiffon');
+
+select * from textile_trading;
+
+
+-- tutorial library table
+create table tutorial_lib (
+	uid varchar(256) not null,
+    tut_name varchar(256) not null,
+    tut_desc varchar(1000),
+    tut_link varchar(500) not null,
+    tut_datetime datetime not null,
+    tut_image_path varchar(1000),
+    primary key (uid, tut_name, tut_datetime)
+);
+
+insert into tutorial_lib(uid,
+    tut_name,
+    tut_desc,
+    tut_link ,
+    tut_datetime) values ('anna', 'Stitching Techniques', 'Learn how to do basic stitches with me! #easy #stitching', 'www.youtube.com','2023-08-26 12:34:56');
+
+select * from tutorial_lib;
+
+-- rsvp table
+create table event_rsvp (
+	uid varchar(250) not null,
+    event_name varchar(250) not null,
+    event_datetime datetime not null,
+    primary key (uid, event_name, event_datetime)
+);
+
+insert into event_rsvp values ('anna', 'Crocheting 101', '2023-09-23 16:00:00');
+
+select * from event_rsvp;
+
+
+

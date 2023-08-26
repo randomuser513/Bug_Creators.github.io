@@ -38,7 +38,7 @@ class UserDAO {
         $conn = $connMgr->connect();
         
         // prepare insert
-        $sql = "INSERT INTO userinfo (uid, hashed_pw, password, email, address) VALUES (:username, :passwordHash, :pw. :email, :address)";
+        $sql = "INSERT INTO userinfo (uid, hashed_pw, password, email, address) VALUES (:username, :passwordHash, :pw, :email, :address)";
         $stmt = $conn->prepare($sql);
         
         $username = $user->getUsername();

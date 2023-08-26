@@ -10,6 +10,32 @@ body {
     text-align: center;
 }
 
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center; /* Center the navigation horizontally */
+    align-items: center; /* Center the navigation vertically */
+}
+
+nav li {
+    margin-right: 20px;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ff99cc; /* Light pink on hover */
+}
+
 main {
     padding: 20px;
 }

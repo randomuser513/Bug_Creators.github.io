@@ -1,18 +1,20 @@
 -- database creation
+drop database if exists upcycletext;  
 create database upcycletext;
 use upcycletext;
 
 -- userinfo table
 create table userinfo (
 	uid varchar(256) not null , 
+    hashed_pw varchar(256) not null,
     password varchar(256) not null,
     email varchar(256) not null,
     address varchar(256) not null,
     primary key (uid)
 );
 
-insert into userinfo values ('buggy', 'buggy1234', 'buggy@email.com','21 North Canal Road 048833');
-insert into userinfo values ('anna', 'anna1984','anna@email.com','6 Raffles Boulevard, #02-201 Marina Square 039594');
+insert into userinfo values ('buggy','$2y$10$nUQdEZoAkx1gXTI5albcJOzd9wieD2vaIhqwjK1x7gq9axUG3XDeW', 'buggy1234', 'buggy@email.com','21 North Canal Road 048833');
+insert into userinfo values ('anna', '$2y$10$2uguxDlAEbmFvQVmVaFKA.RYni1FlhEoNrg4VFmD0kQcBQz2abAa6', 'anna1984','anna@email.com','6 Raffles Boulevard, #02-201 Marina Square 039594');
 
 
 select * from userinfo;
@@ -123,3 +125,5 @@ CREATE TABLE comments (
     primary key (discussion_title)
     
 );
+
+select * from comments; 

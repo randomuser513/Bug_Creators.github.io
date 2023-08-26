@@ -105,4 +105,21 @@ create table tradinginfo (
 
 select * from tradinginfo; 
 
+CREATE TABLE discussions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL, 
+    username varchar(256) NOT NULL
+);
 
+select * from discussions;  
+
+CREATE TABLE comments (
+    
+    discussion_title varchar (256) not null, 
+    id varchar(256) not null, 
+    username varchar(256) not null, 
+    description varchar(1000) not null, 
+    primary key (discussion_title)
+    
+);

@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Show modal
       $('#eventModal').modal('show');
 
-      // Store the event's unique ID as a data attribute in the RSVP button
+      // Store event's unique ID as data attribute in the RSVP button
       rsvpButton.dataset.eventUniqueId = info.event.id;
     }
   });
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var title = event.title;
     var eventDatetime = moment(event.start).format("YYYY-MM-DD HH:mm:ss");
 
-    var userUID = prompt("Please enter your UserID:");
+    var userUID = prompt("To confirm your registration, please enter your UserID:");
     if (userUID === null || userUID === "") {
       return; // User canceled or didn't provide a UID
     }

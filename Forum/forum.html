@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles_forum.css">
+    <title>Community Discussion Forum</title>
+</head>
+<body>
+    <header>
+        <h1>Community Discussion Forum</h1>
+    </header>
+    <div class="container">
+        <div class="discussion-list">
+            <ul class="discussion-items">
+                <li class="discussion-item" onclick="showDiscussion('upcycling-ideas')">
+                    <h3>Upcycling Ideas</h3> 
+                    <p>Share and discuss creative upcycling ideas.</p>
+                </li>
+                <li class="discussion-item" onclick="showDiscussion('upcycling-tips')">
+                    <h3>Upcycling Tips</h3>
+                    <p>Get and give tips for successful upcycling projects.</p>
+                </li>
+                <li class="discussion-item" onclick="showDiscussion('upcycling-showcase')">
+                    <h3>Upcycling Showcase</h3>
+                    <p>Show off your latest upcycling creations!</p>
+                </li>
+                <!-- Add more discussion items here if needed -->
+            </ul>
+            <button id="newDiscussionButton">New Discussion</button>
+<form id="newDiscussionForm" style="display: none;">
+    <input type="text" id="newDiscussionTitle" placeholder="Discussion Title">
+    <input type="text" id="newDiscussionDescription" placeholder="Discussion Description">
+    <button type="submit">Create Discussion</button>
+</form>
+        </div>
+        <div class="discussion-content">
+            <div id="discussion-thread">
+                <!-- Discussion thread comments populated here -->
+            </div>
+        </div>
+    </div>
+    <script src="forum_script.js"></script>
+    <footer>
+        <p>&copy; 2023 Upstyle Text. All rights reserved.</p>
+    </footer>
+</body>
+</html>

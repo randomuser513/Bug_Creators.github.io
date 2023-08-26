@@ -92,5 +92,17 @@ insert into event_rsvp values ('anna', 'Crocheting 101', '2023-09-23 16:00:00');
 
 select * from event_rsvp;
 
+-- trading_platform 
+
+create table tradinginfo (
+	email varchar(256) not null, 
+    item_name varchar(256) not null, 
+    description varchar(1000) not null, 
+    size varchar(256) not null, 
+    item_image varchar(256) not null,
+    primary key ( email, item_name, size, item_image)
+); 
+
+select * from tradinginfo; 
 
 

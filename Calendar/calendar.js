@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var title = event.title;
     var eventDatetime = moment(event.start).format("YYYY-MM-DD HH:mm:ss");
 
-    var userUID = prompt("To confirm your registration, please enter your UserID:");
+    var userUID = prompt("To confirm your registration, please enter your Username:");
     if (userUID === null || userUID === "") {
       return; // User canceled or didn't provide a UID
     }

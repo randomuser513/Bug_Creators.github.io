@@ -83,11 +83,27 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   rsvpButton.addEventListener('click', function() {
-    var eventUniqueId = rsvpButton.dataset.eventUniqueId; // Retrieve the stored event unique ID
-    var event = calendar.getEventById(eventUniqueId); // Retrieve the correct event
-    var title = event.title; // Get the title of the correct event
-    alert('You have successfully RSVPed to the event: ' + title);
-    $('#eventModal').modal('hide');
+    var eventUniqueId = rsvpButton.dataset.eventUniqueId;
+    var event = calendar.getEventById(eventUniqueId);
+    var title = event.title;
+    var eventDatetime = moment(event.start).format("YYYY-MM-DD HH:mm:ss");
+
+    var userUID = prompt("Please enter your UserID:");
+    if (userUID === null || userUID === "") {
+      return; // User canceled or didn't provide a UID
+    }
+  
+    // Make an AJAX request to insert RSVP data into the database
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        alert('You have successfully RSVPed to the event: ' + title);
+        $('#eventModal').modal('hide');
+      }
+    };
+    xhttp.open("POST", "rsvp.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("uid=" + userUID + "&event_name=" + title + "&event_datetime=" + eventDatetime);
   });
 
   calendar.render();

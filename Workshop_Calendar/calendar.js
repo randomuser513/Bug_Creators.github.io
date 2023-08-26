@@ -73,9 +73,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Attach an event listener to the RSVP button
         document.getElementById('rsvpButton').addEventListener('click', function() {
-          // Perform RSVP action here (e.g., show a confirmation message)
-          alert('You have successfully RSVPed to the event: ' + title);
-          $('#eventModal').modal('hide'); // Close the modal after RSVP
+          var event_name = info.event.title;
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "rsvp.php", true);
+          xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  alert(xhr.responseText);
+              }
+          };
+          xhr.send("event_name=" + encodeURIComponent(event_name) + "&uid=" + encodeURIComponent(user_username));
+          
+          $('#eventModal').modal('hide');
         });
       }
     });

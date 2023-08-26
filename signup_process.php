@@ -43,7 +43,7 @@ require_once "common.php";
     if ($count > 0){ 
         $_SESSION['errors'] = $errors; 
         $_SESSION['fail'] = $username; 
-        header('Location:register.php');
+        header('Location:login_page.php');
         return; 
     }
     
@@ -64,7 +64,7 @@ if ( $status ) {
 } else { 
     $_SESSION['fail'] = $username; 
     echo "Error in registration";
-    header('Location:register.php');  
+    header('Location:login_page.php');  
 }
     
 ?>

@@ -1,94 +1,94 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-    
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      eventTimeFormat: {
-        hour: 'numeric',
-        minute: '2-digit',
-        meridiem: 'short'
+  var calendarEl = document.getElementById('calendar');
+  var rsvpButton = document.getElementById('rsvpButton'); // Retrieve the RSVP button
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    eventTimeFormat: {
+      hour: 'numeric',
+      minute: '2-digit',
+      meridiem: 'short'
+    },
+    events: [
+      {
+        id: 'event1',
+        title: 'Upcycling Workshop Part 1',
+        start: '2023-09-01T10:00:00',
+        end: '2023-09-01T14:00:00',
+        description: 'Learn upcycling techniques from experts!',
+        location: 'Virtual (Zoom)',
+        instructor: 'Christian Tan',
       },
-      events: [
-        {
-          title: 'Upcycling Workshop Part 1',
-          start: '2023-09-01T10:00:00',
-          end: '2023-09-01T14:00:00',
-          description: 'Learn upcycling techniques from experts!',
-          location: 'Virtual (Zoom)',
-          instructor: 'Christian Tan',
-        },
-        {
-          title: 'Upcycling Workshop Part 2',
-          start: '2023-09-10T13:30:00',
-          end: '2023-09-10T17:30:00',
-          description: 'Learn upcycling techniques from expert, Lily.',
-          location: 'Virtual (Zoom)',
-          instructor: 'Lily Quek',
-        },
-        {
-          title: 'Colour Theory Workshop',
-          start: '2023-09-07T11:00:00',
-          end: '2023-09-07T13:00:00',
-          description: 'Learn the basics of colour theory!',
-          location: 'Virtual (Zoom)',
-          instructor: 'Avery Quek',
-        },
-        {
-          title: 'DIY Home Decor Class',
-          start: '2023-08-28T09:30:00',
-          end: '2023-08-28T12:30:00',
-          description: 'Learn how to create DIY Home Decor with upcycling.',
-          location: 'Virtual (Zoom)',
-          instructor: 'Kelly Kok',
-        },
-        {
-          title: 'Stitching Workshop',
-          start: '2023-08-30T14:00:00',
-          end: '2023-08-30T16:00:00',
-          description: 'Learn basic stitching techniques',
-          location: 'Virtual (Zoom)',
-          instructor: 'May Lee',
-        }
-      ],
-      eventClick: function(info) {
-        var title = info.event.title;
-        var start = info.event.start.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-        var end = info.event.end.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', meridiem: 'short' });
-        var location = info.event.extendedProps.location;
-        var instructor = info.event.extendedProps.instructor;
-        var description = info.event.extendedProps.description;
+      {
+        id: 'event2',
+        title: 'Upcycling Workshop Part 2',
+        start: '2023-09-10T13:30:00',
+        end: '2023-09-10T17:30:00',
+        description: 'Learn upcycling techniques from expert, Lily.',
+        location: 'Virtual (Zoom)',
+        instructor: 'Lily Quek',
+      },
+      {
+        id: 'event3',
+        title: 'Colour Theory Workshop',
+        start: '2023-09-07T11:00:00',
+        end: '2023-09-07T13:00:00',
+        description: 'Learn the basics of colour theory!',
+        location: 'Virtual (Zoom)',
+        instructor: 'Avery Quek',
+      },
+      {
+        id: 'event4',
+        title: 'DIY Home Decor Class',
+        start: '2023-08-28T09:30:00',
+        end: '2023-08-28T12:30:00',
+        description: 'Learn how to create DIY Home Decor with upcycling.',
+        location: 'Virtual (Zoom)',
+        instructor: 'Kelly Kok',
+      },
+      {
+        id: 'event5',
+        title: 'Stitching Workshop',
+        start: '2023-08-30T14:00:00',
+        end: '2023-08-30T16:00:00',
+        description: 'Learn basic stitching techniques',
+        location: 'Virtual (Zoom)',
+        instructor: 'May Lee',
+      },
+    ],
+    eventClick: function(info) {
+      var title = info.event.title;
+      var start = info.event.start.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+      var end = info.event.end.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', meridiem: 'short' });
+      var location = info.event.extendedProps.location;
+      var instructor = info.event.extendedProps.instructor;
+      var description = info.event.extendedProps.description;
 
-        var eventDetails = `
-          <h5>${title}</h5>
-          <p><strong>Time:</strong> ${start} - ${end}</p>
-          <p><strong>Location:</strong> ${location}</p>
-          <p><strong>Instructor:</strong> ${instructor}</p>
-          <p>${description}</p>
-        `;
- 
-        document.querySelector('#eventDetails').innerHTML = eventDetails;
+      var eventDetails = `
+        <h5>${title}</h5>
+        <p><strong>Time:</strong> ${start} - ${end}</p>
+        <p><strong>Location:</strong> ${location}</p>
+        <p><strong>Instructor:</strong> ${instructor}</p>
+        <p>${description}</p>
+      `;
 
-        // Show modal
-        $('#eventModal').modal('show');
+      document.querySelector('#eventDetails').innerHTML = eventDetails;
 
-        // Attach an event listener to the RSVP button
-        document.getElementById('rsvpButton').addEventListener('click', function() {
-          var event_name = info.event.title;
-          var xhr = new XMLHttpRequest();
-          xhr.open("POST", "rsvp.php", true);
-          xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          xhr.onreadystatechange = function() {
-              if (xhr.readyState === 4 && xhr.status === 200) {
-                  alert(xhr.responseText);
-              }
-          };
-          xhr.send("event_name=" + encodeURIComponent(event_name) + "&uid=" + encodeURIComponent(user_username));
-          
-          $('#eventModal').modal('hide');
-        });
-      }
-    });
-    
-    calendar.render();
+      // Show modal
+      $('#eventModal').modal('show');
+
+      // Store the event's unique ID as a data attribute in the RSVP button
+      rsvpButton.dataset.eventUniqueId = info.event.id;
+    }
   });
-  
+
+  rsvpButton.addEventListener('click', function() {
+    var eventUniqueId = rsvpButton.dataset.eventUniqueId; // Retrieve the stored event unique ID
+    var event = calendar.getEventById(eventUniqueId); // Retrieve the correct event
+    var title = event.title; // Get the title of the correct event
+    alert('You have successfully RSVPed to the event: ' + title);
+    $('#eventModal').modal('hide');
+  });
+
+  calendar.render();
+});

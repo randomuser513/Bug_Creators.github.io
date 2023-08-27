@@ -8,7 +8,7 @@ class UserDAO {
         $conn = $connMgr->connect();
         
         // prepare select
-        $sql = "SELECT uid, hashed_pw, password, email, address FROM userinfo WHERE uid = :username";
+        $sql = "SELECT uid, hashed_pw FROM userinfo WHERE uid = :username";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
             
@@ -68,4 +68,4 @@ class UserDAO {
     }
 }
 
-?> 
+?>  
